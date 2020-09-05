@@ -1,7 +1,7 @@
 const knex = require('knex')
 const testConfig = require('../../knexfile').test
 
-const {getBookings, addBooking, getSingleBooking} = require('./db')
+const {getBookings, addBooking, getSingleBooking, updateBooking, deleteBooking} = require('./db')
 
 
 let db = knex(testConfig)
@@ -32,13 +32,45 @@ describe('addBooking',()=>{
             dateCreated: new Date(Date.now()),
             start: new Date(2020, 8, 6, 17, 0),
             end: new Date(2020, 8, 6, 18, 0),
-            comments: "I wanna go flying after",
+            comments: "I wanna go flying after"
         }
         return addBooking(newBooking, db)
             .then(()=>{
                 return getSingleBooking(2,db)
                     .then((booking)=>{
                         expect(booking.name).toEqual('Jess')
+                    })
+            })
+    })
+})
+
+describe('updateBooking',()=>{
+    test('updates a booking',() =>{
+        let booking ={
+            name: "Leon",
+            number: 278433871,
+            start: new Date(2020, 8, 6, 17, 0),
+            end: new Date(2020, 8, 6, 18, 0),
+            comments: "I wanna go flying after"
+        }
+        return updateBooking(booking,1,db)
+            .then(() =>{
+                return getSingleBooking(1,db)
+                .then((newbooking)=>{
+                    expect(newbooking.name).toEqual('Leon')
+                })
+            })
+    })
+})
+
+
+describe('deleteBooking',()=>{
+    test('deletes a booking',()=>{
+        return deleteBooking(1, db)
+            .then(()=>{
+                return getBookings(db)
+                    .then((bookings)=>{
+                        expect(bookings.length).toBe(0)
                     })
             })
     })

@@ -18,9 +18,27 @@ function addBooking(newBooking, db=database){
   return db('Bookings')
     .insert(newBooking)
 }
- 
+
+function updateBooking(booking, id, db = database){
+    return db('Bookings')
+    .where({id})
+    .update(booking)
+}
+
+
+function deleteBooking(id, db = database){
+    return db('Bookings')
+    .where({id})
+    .del()
+}
+
+
+
+
 module.exports = {
       getBookings,
       addBooking,
-      getSingleBooking
+      getSingleBooking,
+      updateBooking,
+      deleteBooking
   }

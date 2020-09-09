@@ -39,15 +39,15 @@ export default class AddBooking extends React.Component{
                 onChange={this.handleChange}
                 value={this.state.number}/>
 
-                <input placeholder='dateCreated' name='dateCreated'
+                {/* <input placeholder='dateCreated' name='dateCreated'
                 onChange={this.handleChange}
-                value={this.state.dateCreated}/>
+                value={this.state.dateCreated}/> */}
 
-                <input placeholder='Start' name='start'
+                <input  placeholder='Start' name='start'
                 onChange={this.handleChange}
                 value={this.state.start}/>
 
-                <input placeholder='End' name='end'
+                <input  placeholder='End' name='end'
                 onChange={this.handleChange}
                 value={this.state.end}/>
                                     

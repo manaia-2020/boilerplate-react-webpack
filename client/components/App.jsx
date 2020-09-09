@@ -46,9 +46,9 @@ class App extends React.Component {
           {this.state.bookings.map((booking)=>(<li><div>
             <h5>Name: {booking.name}</h5>
             <h5>Number: 0{booking.number}</h5>
-            <h5>Booked on: {moment.unix(booking.dateCreated).format('dddd, MMMM Do, h:mm A')}</h5>
-            <h5>Start: {moment.unix(booking.start).format('dddd, MMMM Do, h:mm A')}</h5>
-            <h5>End: {moment.unix(booking.end).format('dddd, MMMM Do, h:mm A')}</h5>
+            <h5>Booked on: {moment.unix(booking.dateCreated/1000).format('dddd, MMMM Do, h:mm A')}</h5>
+            <h5>Start: {moment.unix(booking.start/1000).format('dddd, MMMM Do, h:mm A')}</h5>
+            <h5>End: {moment.unix(booking.end/1000).format('dddd, MMMM Do, h:mm A')}</h5>
             <h5>Comments: {booking.comments}</h5>
           </div>
           </li>))}

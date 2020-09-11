@@ -32,11 +32,7 @@ class App extends React.Component {
         bookings: bookings
       })
     }
-  
-    // timeConverter =(timeData)=>{
-    //   var myDate = new Date( timeData *1000);
-    //   banana = myDate.toGMTString()+myDate.toLocaleString();
-    // }
+
   
   render(){
     console.log(this.state);

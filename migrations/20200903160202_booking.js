@@ -4,7 +4,7 @@ exports.up = function(knex) {
       table.increments('id').primary()
       table.string('name')
       table.integer('number')
-      table.date('dateCreated')
+      table.timestamps('dateCreated')
       table.datetime('start').unique()
       table.datetime('end').unique()
       table.string('comments')
